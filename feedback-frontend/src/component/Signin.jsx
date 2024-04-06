@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../state/auth";
+import { BASE_URL } from "../utils/constant";
 
 const SignIn = () => {
   const { login } = useAuth();
@@ -13,7 +14,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/employees/login", {
+      const response = await fetch(`${BASE_URL}/employees/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

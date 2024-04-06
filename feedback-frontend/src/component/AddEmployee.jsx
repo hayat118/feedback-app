@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BASE_URL } from "../utils/constant";
 
 function AddEmployee() {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ function AddEmployee() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:3001/employees", {
+      const response = await fetch(`${BASE_URL}/employees`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

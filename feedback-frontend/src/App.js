@@ -9,6 +9,7 @@ import AddEmployee from "./component/AddEmployee";
 import Update from "./component/Update";
 import { useEffect } from "react";
 import { useAuth } from "./state/auth";
+import { BASE_URL } from "./utils/constant";
 
 const router = createBrowserRouter([
   {
@@ -43,16 +44,13 @@ function App() {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await fetch(
-          "http://localhost:3001/employees/identify",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/employees/identify`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
 
         if (response.ok) {
           const data = await response.json();

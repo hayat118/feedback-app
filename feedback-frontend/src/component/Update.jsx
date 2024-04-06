@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constant";
 
 function Update() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function Update() {
 
   const fetchEmployeeData = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/employees/${id}`);
+      const response = await fetch(`${BASE_URL}/employees/${id}`);
       if (response.ok) {
         const data = await response.json();
 
@@ -42,7 +43,7 @@ function Update() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://localhost:3001/employees/${id}`, {
+      const response = await fetch(`${BASE_URL}/employees/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

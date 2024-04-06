@@ -3,6 +3,7 @@ import Header from "./Header";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../state/auth";
+import { BASE_URL } from "../utils/constant";
 
 const EmployeeList = () => {
   const { user } = useAuth();
@@ -26,7 +27,7 @@ const EmployeeList = () => {
   // fetch employee
   const fetchEmployees = async () => {
     try {
-      const response = await fetch("http://localhost:3001/employees");
+      const response = await fetch(`${BASE_URL}/employees`);
       if (response.ok) {
         const data = await response.json();
         setEmployees(data);
@@ -47,7 +48,7 @@ const EmployeeList = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const response = await fetch(`http://localhost:3001/employees/${id}`, {
+        const response = await fetch(`${BASE_URL}/employees/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: token,
@@ -86,7 +87,7 @@ const EmployeeList = () => {
   const handleFeedbackSubmit = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/employees/${feedbackData.id}/feedbacks`,
+        `${BASE_URL}/employees/${feedbackData.id}/feedbacks`,
         {
           method: "POST",
           headers: {
