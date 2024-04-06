@@ -12,7 +12,7 @@ const seed = require("./utils/seed");
 
 // connect mongo
 mongoose
-  .connect("mongodb://0.0.0.0:27017/feedback-backend")
+  .connect(process.env.MONGO_URI || "mongodb://0.0.0.0:27017/feedback-backend")
   .then(() => {
     console.log("Connected to MongoDB");
     seed();
