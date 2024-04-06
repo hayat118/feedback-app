@@ -86,12 +86,15 @@ const EmployeeList = () => {
   //
   const handleFeedbackSubmit = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await fetch(
         `${BASE_URL}/employees/${feedbackData.id}/feedbacks`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: token,
           },
           body: JSON.stringify({
             feedback: feedbackData.feedback,
