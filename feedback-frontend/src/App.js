@@ -43,6 +43,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
+      if (!token) return;
       try {
         const response = await fetch(`${BASE_URL}/employees/identify`, {
           method: "POST",
