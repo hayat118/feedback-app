@@ -132,9 +132,11 @@ const EmployeeList = () => {
               <li className="box" key={employee._id}>
                 <div className=" flex justify-btn gap feedback-box">
                   <p>performance:{employee.performance}</p>
-                  <button onClick={() => handleFeedbackToggle(employee._id)}>
-                    Add Feedbacks
-                  </button>
+                  {user ? (
+                    <button onClick={() => handleFeedbackToggle(employee._id)}>
+                      Add Feedbacks
+                    </button>
+                  ) : null}
                 </div>
                 <div className="name">
                   <h2>Name:{employee.name}</h2>
