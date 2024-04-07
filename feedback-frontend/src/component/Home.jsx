@@ -5,7 +5,15 @@ import Header from "./Header";
 function Home() {
   return (
     <div>
-      <Header />
+      <div>
+        <Header />
+      </div>
+      <div className="content">
+        <h1>
+          <span className="small">Welcome To</span>
+          <br /> Feedback App
+        </h1>
+      </div>
     </div>
   );
 }

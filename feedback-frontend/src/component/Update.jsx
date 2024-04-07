@@ -66,8 +66,8 @@ function Update() {
 
   return (
     <div>
-      <h2>Update Employee</h2>
-      <form onSubmit={handleUpdateSubmit}>
+      <h2 className="h2 ">Update Employee</h2>
+      <form className="update" onSubmit={handleUpdateSubmit}>
         <input
           type="text"
           name="name"

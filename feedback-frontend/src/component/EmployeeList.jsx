@@ -119,20 +119,27 @@ const EmployeeList = () => {
       <div>
         <Header />
       </div>
-      <div className="flex primary-padding justify-btn">
+      <div className="primary-padding margin border-box">
         <div>
-          <h2>List Of Employee</h2>
-          <ul>
+          <div className="flex justify-btn">
+            <h2>List Of Employee</h2>
+            <Link to="/add">
+              <button>Add Employee</button>
+            </Link>
+          </div>
+          <ul className="employee-list">
             {employees.map((employee) => (
               <li className="box" key={employee._id}>
-                <h2>Name:{employee.name}</h2>
-                <p>Email:{employee.email}</p>
-                <p>Role:{employee.role}</p>
-                <div className="flex justify-btn">
+                <div className=" flex justify-btn gap feedback-box">
                   <p>performance:{employee.performance}</p>
                   <button onClick={() => handleFeedbackToggle(employee._id)}>
                     Add Feedbacks
                   </button>
+                </div>
+                <div className="name">
+                  <h2>Name:{employee.name}</h2>
+                  <p>Email:{employee.email}</p>
+                  <p>Role:{employee.role}</p>
                 </div>
                 {showFeedbackBox && feedbackData.id === employee._id && (
                   <div className="feedback-box">
@@ -144,14 +151,16 @@ const EmployeeList = () => {
                     <button onClick={handleFeedbackSubmit}>Submit</button>
                   </div>
                 )}
-                <h3>Feedbacks:</h3>
-                <ul>
-                  {employee.feedbacks.map((feedback, index) => (
-                    <li key={index}>{feedback}</li>
-                  ))}
-                </ul>
+                <div className="feed-box">
+                  <h3>Feedbacks:</h3>
+                  <ul>
+                    {employee.feedbacks.map((feedback, index) => (
+                      <li key={index}>{feedback}</li>
+                    ))}
+                  </ul>
+                </div>
                 {user?.role === "admin" ? (
-                  <>
+                  <div className=" flex gap">
                     <Link
                       to={`/update/${employee._id}`}
                       onClick={() => handleUpdate(employee)}
@@ -165,16 +174,11 @@ const EmployeeList = () => {
                     >
                       Delete
                     </button>
-                  </>
+                  </div>
                 ) : null}
               </li>
             ))}
           </ul>
-        </div>
-        <div>
-          <Link to="/add">
-            <button>Add Employee</button>
-          </Link>
         </div>
       </div>
     </>
